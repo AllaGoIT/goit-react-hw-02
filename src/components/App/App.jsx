@@ -13,24 +13,24 @@ const App = () => {
 	bad: 0
     }
          )
-    const handleClickGood = () => {
-        setClicks.good = (clicks + 1);
+    const updateFeedbackG = () => {
+        setClicks.good = (clicks.good + 1);
     };
 
-    const handleClickNeutral = () => {
+    const updateFeedbackN= () => {
 setClicks.neutral = (clicks.neutral + 1);
     }
 
-    const handleClickBad = () => {
+    const updateFeedbackB = () => {
         setClicks.bad = (clicks.bad + 1);
     };
       
     return (
         <>
              <Description/>
-            <Options name={name.good} value={clicks} onUpdate={handleClickGood}/>
-            <Options name={name.neutral}value={clicks.neutral} onUpdate={handleClickNeutral} />
-            <Options  name={name.bad}value={clicks.bad} onUpdate={handleClickBad} />
+            <Options name={name.good} value={clicks} onClick={updateFeedbackG('good')}/>
+            <Options name={name.neutral}value={clicks.neutral} onClick={updateFeedbackN("neutral")} />
+            <Options  name={name.bad}value={clicks.bad} onClick={ updateFeedbackB("bad")} />
             <Feedback value = {value} />
            
     </>
