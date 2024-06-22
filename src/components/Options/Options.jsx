@@ -1,11 +1,11 @@
 import name from "../name.json"
-const Options = ({updateFeedback }) => {
+const Options = ({onclick }) => {
 
     return (
         <>
-            <button name={name.good} onClick={() => {updateFeedback("good")}}>Good</button>
-            <button name={name.neutral}onClick={() => {updateFeedback("neutral")}}>Neutral</button>
-            <button name={name.bad} onClick={() => {updateFeedback("bad")}}>Bad</button>
+            <button name={name.good} onClick={() => {onclick("good")}}>Good</button>
+            <button name={name.neutral}onClick={() => {onclick("neutral")}}>Neutral</button>
+            <button name={name.bad} onClick={() => {onclick("bad")}}>Bad</button>
         </>
     )
 }

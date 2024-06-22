@@ -1,9 +1,9 @@
 const Feedback = ({ value }) => {
     return (
         <>
-            <p>{value.good }</p>
-            <p>{ value.neutral}</p>
-            <p>{ value.bad}</p>
+            <p >Good:{value.good}</p>
+            <p>Neutral:{ value.neutral}</p>
+            <p>Bad:{ value.bad}</p>
         
         </>
     )
