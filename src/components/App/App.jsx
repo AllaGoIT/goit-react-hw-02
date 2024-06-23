@@ -18,16 +18,18 @@ const App = () => {
 
     const totalFeedback = clicks.good + clicks.neutral + clicks.bad;
 
+    const upDateState = () => {
+        setClicks({clicks})
+    }
+
 
     
 
         return (
             <>
                 <Description />
-                <Options onclick={updateFeedback} />
-                { totalFeedback > 0?<Feedback value={clicks} />: <Notification />}
-               
-           
+                <Options onclick={updateFeedback} onUpdate = {upDateState} total = {totalFeedback} />
+                {totalFeedback > 0 ? <Feedback value={clicks} /> : <Notification />}
             </>
         )
     
