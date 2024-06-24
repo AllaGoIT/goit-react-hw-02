@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Options from "../Options/Options.jsx";
 import Feedback from "../Feedback/Feedback.jsx";
 import Description from "../Description/Description.jsx";
@@ -15,6 +15,18 @@ const App = () => {
     const updateFeedback = (feedbackType) => {
         setClicks({ ...clicks, [feedbackType]: clicks[feedbackType] + 1 });
     }
+
+     useState(() => {
+        const savedClicks = window.localStorage.getItem("statFeedback");
+
+        if (savedClicks !== null) {
+            return JSON.parse(savedClicks);
+        }
+        return 0;
+    })
+    useEffect(() => {
+        window.localStorage.setItem("statFeedback", JSON.stringify({clicks}))
+    }, [clicks]);
 
     const totalFeedback = clicks.good + clicks.neutral + clicks.bad;
    const positiveFeedback = Math.round((clicks.good / totalFeedback) * 100);
