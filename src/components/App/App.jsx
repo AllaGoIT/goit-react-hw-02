@@ -25,7 +25,7 @@ const App = () => {
     }
 
     useEffect(() => {
-        window.localStorage.setItem("statFeedback", JSON.stringify({clicks}))
+        window.localStorage.setItem("statFeedback", JSON.stringify(clicks))
     }, [clicks]);
 
     const totalFeedback = clicks.good + clicks.neutral + clicks.bad;
