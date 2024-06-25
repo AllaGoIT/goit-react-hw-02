@@ -6,15 +6,8 @@ import Notification from "../Notification/Notification.jsx"
 
 const App = () => {
 
-    const [clicks, setClicks] = useState({
-        good: 0,
-        neutral: 0,
-        bad: 0
-    }
-    )
-    const updateFeedback = (feedbackType) => {
-        setClicks({ ...clicks, [feedbackType]: clicks[feedbackType] + 1 });
-        const savedClicks = window.localStorage.getItem("statFeedback");
+  const [clicks, setClicks] = useState(() => {
+  const savedClicks = window.localStorage.getItem("statFeedback");
         
         if (savedClicks !== null) {
             return JSON.parse(savedClicks);
@@ -23,17 +16,14 @@ const App = () => {
         good: 0,
         neutral: 0,
         bad: 0
-    };
+    }
+    })
+    
+    const updateFeedback = (feedbackType) => {
+        setClicks({ ...clicks, [feedbackType]: clicks[feedbackType] + 1 });
+        
     }
 
-    //  useState(() => {
-    //     const savedClicks = window.localStorage.getItem("statFeedback");
-
-    //     if (savedClicks !== null) {
-    //         return JSON.parse(savedClicks);
-    //     }
-    //     return 0;
-    // })
     useEffect(() => {
         window.localStorage.setItem("statFeedback", JSON.stringify({clicks}))
     }, [clicks]);
@@ -43,7 +33,11 @@ const App = () => {
 
 
     const upDateState = () => {
-        setClicks(0)
+        setClicks({
+        good: 0,
+        neutral: 0,
+        bad: 0 
+        })
     }
 
         return (
